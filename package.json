@@ -11,9 +11,14 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.1.5",
+    "@tabler/icons-react": "^3.21.0",
+    "framer-motion": "^11.11.10",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react-rough-notation": "^1.0.5",
+    "tailwind": "^4.0.0",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@types/node": "^20",
