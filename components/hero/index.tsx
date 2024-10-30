@@ -18,7 +18,7 @@ export default function Hero() {
   const ref = useRef(null)
   const isInView = useInView(ref)
   return (
-    <div ref={ref} className='bg-gray-50 w-full dark:bg-neutral-800'>
+    <div ref={ref} className='bg-gray-50 w-full dark:bg-neutral-800 mb-20 md:mb-0'>
       <div className='grid max-h-[50rem] md:max-h-[40rem] overflow-hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto  pt-10 md:pt-20  items-start'>
         <div className='lg:col-span-2 py-10 md:py-10 px-4 md:px-8'>
           <RoughNotationGroup show={isInView}>
