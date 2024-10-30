@@ -6,7 +6,6 @@ import {
   useScroll,
   useTransform,
   useMotionValueEvent,
-  MotionValue,
 } from 'framer-motion'
 import { IconRocket } from '@tabler/icons-react'
 import Image from 'next/image'
