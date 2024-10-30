@@ -1,142 +1,242 @@
 'use client'
-import { cn } from '~lib/utils'
-import { IconMenu2, IconX } from '@tabler/icons-react'
-import { motion, AnimatePresence } from 'framer-motion'
+
+import React, { useRef, useState } from 'react'
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  MotionValue,
+} from 'framer-motion'
+import { IconRocket } from '@tabler/icons-react'
 import Image from 'next/image'
-import Link from 'next/link'
-import React, { useState } from 'react'
-import logo from '~public/images/AE_logo.png'
 
-interface NavItem {
-  name: string
-  link: string
+interface Feature {
+  icon: React.ReactNode
+  title: string
+  description: string
+  content: React.ReactNode
 }
 
-interface NavProps {
-  navItems: NavItem[]
-}
+const features: Feature[] = [
+  {
+    icon: <IconRocket className='h-8 w-8 text-neutral-200' />,
+    title: 'Generate ultra realistic images in seconds',
+    description:
+      'With our state of the art AI, you can generate ultra realistic images in no time at all.',
+    content: (
+      <div>
+        <Image
+          src='https://assets.aceternity.com/pro/car-1.jpg'
+          alt='car'
+          height={500}
+          width={500}
+          className='rounded-lg'
+        />
+      </div>
+    ),
+  },
+  {
+    icon: <IconRocket className='h-8 w-8 text-neutral-200' />,
+    title: 'Replicate great Art',
+    description:
+      'Generate the painting of renowned artists, like Van Gogh or Monet or Majnu bhai.',
+    content: (
+      <Image
+        src='https://assets.aceternity.com/pro/art.jpeg'
+        alt='car'
+        height={500}
+        width={500}
+        className='rounded-lg'
+      />
+    ),
+  },
+  {
+    icon: <IconRocket className='h-8 w-8 text-neutral-200' />,
+    title: 'Batch generate images with a single click.',
+    description:
+      'With our state of the art AI, you can generate a batch of images within 10 seconds with absolutely no compute power.',
+    content: (
+      <div className='relative'>
+        <div className='-rotate-[10deg]'>
+          <Image
+            src='https://assets.aceternity.com/pro/car-1.jpg'
+            alt='car'
+            height={500}
+            width={500}
+            className='rounded-lg'
+          />
+        </div>
+        <div className='absolute inset-0 transform rotate-[10deg]'>
+          <Image
+            src='https://assets.aceternity.com/pro/car-2.jpg'
+            alt='car'
+            height={500}
+            width={500}
+            className='rounded-lg'
+          />
+        </div>
+      </div>
+    ),
+  },
+]
 
-export default function Header() {
-  return (
-    <div className='w-full dark:bg-neutral-900 py-2 px-2'>
-      <Navbar />
-    </div>
-  )
-}
+export default function StickyScrollSection() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  const backgrounds = ['#1f2937', '#262626', '#1e293b']
 
-const Navbar = () => {
-  const navItems: NavItem[] = [
-    { name: 'Exhibition', link: '#' },
-    { name: 'Booking', link: '#' },
-    { name: 'Events', link: '#' },
-    { name: 'About', link: '#' },
-    { name: 'FAQ', link: '#' },
-  ]
+  const [gradient, setGradient] = useState(backgrounds[0])
 
-  return (
-    <div className='w-full'>
-      <DesktopNav navItems={navItems} />
-      <MobileNav navItems={navItems} />
-    </div>
-  )
-}
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const cardsBreakpoints = features.map((_, index) => index / features.length)
+    const closestBreakpointIndex = cardsBreakpoints.reduce(
+      (acc, breakpoint, index) => {
+        const distance = Math.abs(latest - breakpoint)
+        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
+          return index
+        }
+        return acc
+      },
+      0
+    )
+    setGradient(backgrounds[closestBreakpointIndex % backgrounds.length])
+  })
 
-const DesktopNav: React.FC<NavProps> = ({ navItems }) => {
-  const [hovered, setHovered] = useState<number | null>(null)
   return (
     <motion.div
-      onMouseLeave={() => {
-        setHovered(null)
+      animate={{
+        background: gradient,
       }}
-      className={cn(
-        'hidden lg:flex flex-row self-start bg-white dark:bg-neutral-950 items-center justify-between py-2 max-w-7xl mx-auto px-4 rounded-full relative z-[60] w-full',
-        'sticky top-40 inset-x-0'
-      )}>
-      <Logo />
-      <div className='lg:flex flex-row flex-1 hidden items-center justify-center space-x-2 lg:space-x-2 text-sm text-zinc-600 font-medium hover:text-zinc-800 transition duration-200'>
-        {navItems.map((navItem, idx) => (
-          <Link
-            onMouseEnter={() => setHovered(idx)}
-            className='text-neutral-600 dark:text-neutral-300 relative px-4 py-2'
-            key={`link-${idx}`}
-            href={navItem.link}>
-            {hovered === idx && (
-              <motion.div
-                layoutId='hovered'
-                className='w-full h-full absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-full'
-              />
-            )}
-            <span className='relative z-20'>{navItem.name}</span>
-          </Link>
-        ))}
+      transition={{
+        duration: 0.5,
+      }}
+      ref={ref}
+      className='w-full relative h-full pt-20 md:pt-40 max-w-7xl mx-auto'>
+      <div className='px-6 flex flex-col items-center text-center'>
+        <h2 className='mt-4 text-white text-lg md:text-2xl lg:text-4xl font-bold'>
+          AI Smarter than Aliens
+        </h2>
+        <p className='text-white text-sm md:text-base max-w-md mx-auto mt-4'>
+          Our AI is smarter than aliens, it can predict the future and help you
+          generate wild images.
+        </p>
       </div>
-      <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-lg bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
-        Book your visit
-      </button>
+      <StickyScroll content={features} />
     </motion.div>
   )
 }
 
-const MobileNav: React.FC<NavProps> = ({ navItems }) => {
-  const [open, setOpen] = useState(false)
+interface StickyScrollProps {
+  content: Feature[]
+}
 
+const StickyScroll: React.FC<StickyScrollProps> = ({ content }) => {
   return (
-    <>
-      <motion.div
-        animate={{
-          borderRadius: open ? '4px' : '2rem',
-        }}
-        key={String(open)}
-        className='flex relative flex-col lg:hidden w-full justify-between items-center bg-white dark:bg-neutral-950  max-w-[calc(100vw-2rem)] mx-auto px-4 py-2'>
-        <div className='flex flex-row justify-between items-center w-full'>
-          <Logo />
-          {open ? (
-            <IconX
-              className='text-black dark:text-white'
-              onClick={() => setOpen(!open)}
-            />
-          ) : (
-            <IconMenu2
-              className='text-black dark:text-white'
-              onClick={() => setOpen(!open)}
-            />
-          )}
-        </div>
-
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className='flex rounded-lg absolute top-16 bg-white dark:bg-neutral-950 inset-x-0 z-20 flex-col items-start justify-start gap-4 w-full px-4 py-8'>
-              {navItems.map((navItem, idx) => (
-                <Link
-                  key={`link-${idx}`}
-                  href={navItem.link}
-                  className='relative text-neutral-600 dark:text-neutral-300'>
-                  <motion.span className='block'>{navItem.name} </motion.span>
-                </Link>
-              ))}
-              <button className='px-8 py-2 w-full rounded-lg bg-black dark:bg-white dark:text-black font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
-                Book a call
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+    <div className='py-4 md:py-20'>
+      <motion.div className='hidden lg:flex h-full flex-col max-w-7xl mx-auto justify-between relative p-10'>
+        {content.map((item, index) => (
+          <ScrollContent key={item.title + index} item={item} index={index} />
+        ))}
       </motion.div>
-    </>
+      <motion.div className='flex lg:hidden flex-col max-w-7xl mx-auto justify-between relative p-10'>
+        {content.map((item, index) => (
+          <ScrollContentMobile
+            key={item.title + index}
+            item={item}
+            index={index}
+          />
+        ))}
+      </motion.div>
+    </div>
   )
 }
 
-const Logo = () => {
+interface ScrollContentProps {
+  item: Feature
+  index: number
+}
+
+const ScrollContent: React.FC<ScrollContentProps> = ({ item, index }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  const translate = useTransform(scrollYProgress, [0, 1], [0, 250])
+  const translateContent = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.05, 0.5, 0.7, 1],
+    [0, 1, 1, 0, 0]
+  )
+
+  const opacityContent = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.5, 0.8, 1],
+    [0, 0, 1, 1, 0]
+  )
+
   return (
-    <Link
-      href='/'
-      className='font-normal flex space-x-2 items-center text-sm text-black px-2 py-1  relative z-20'>
-      <Image src={logo} alt='logo' width={100} height={100} />
-    </Link>
+    <motion.div
+      ref={ref}
+      transition={{
+        duration: 0.3,
+      }}
+      key={item.title + index}
+      className='my-40 relative grid grid-cols-2 gap-8'>
+      <div className='w-full'>
+        <motion.div
+          style={{
+            y: translate,
+            opacity: index === 0 ? opacityContent : 1,
+          }}>
+          <div>{item.icon}</div>
+          <motion.h2 className='max-w-md mt-2 font-bold text-2xl lg:text-4xl inline-block bg-clip-text text-left text-transparent bg-gradient-to-b from-white to-white'>
+            {item.title}
+          </motion.h2>
+          <motion.p className='text-lg text-neutral-500 font-regular max-w-sm mt-2'>
+            {item.description}
+          </motion.p>
+        </motion.div>
+      </div>
+      <motion.div
+        style={{
+          y: translateContent,
+          opacity: opacity,
+        }}
+        className='h-full w-full rounded-md self-start'>
+        {item.content}
+      </motion.div>
+    </motion.div>
+  )
+}
+
+const ScrollContentMobile: React.FC<ScrollContentProps> = ({ item, index }) => {
+  return (
+    <motion.div
+      transition={{
+        duration: 0.3,
+      }}
+      key={item.title + index}
+      className='my-10 relative flex flex-col md:flex-row md:gap-20'>
+      <motion.div className='w-full rounded-md self-start mb-8'>
+        {item.content}
+      </motion.div>
+      <div className='w-full'>
+        <motion.div className='mb-6'>
+          <div>{item.icon}</div>
+          <motion.h2 className='mt-2 font-bold text-2xl lg:text-4xl inline-block bg-clip-text text-left text-transparent bg-gradient-to-b from-white to-white'>
+            {item.title}
+          </motion.h2>
+          <motion.p className='text-sm md:text-base text-neutral-500 font-bold max-w-sm mt-2'>
+            {item.description}
+          </motion.p>
+        </motion.div>
+      </div>
+    </motion.div>
   )
 }
