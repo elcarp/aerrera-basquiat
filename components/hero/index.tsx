@@ -102,14 +102,14 @@ export const Skeleton = () => {
         }}
         className='absolute inset-0 mx-auto w-full max-w-[360px] h-[600px] dark:filter dark:invert'
       />
-      <div className='px-12 -mt-7 flex flex-col gap-4 relative z-20'>
+      <div className='px-12 flex flex-col gap-4 relative z-20'>
         <div className='images'>
           <Image
             src='https://images.unsplash.com/photo-1639999472003-dc2320ce5708?q=80&w=2865&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
-            height='350'
+            height='200'
             width='100'
-            className='h-full opacity-0 w-full max-h-[350px] object-cover image'
+            className='h-full opacity-0 w-full max-h-[200px] object-cover image'
           />
           {/* {' '}
           <Image
