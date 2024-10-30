@@ -1,107 +1,139 @@
 'use client'
-
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '~public/images/AE_logo.png'
+import { cn } from '~lib/utils'
+import { IconMenu2, IconX } from '@tabler/icons-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import React, { useState } from 'react'
+import logo from '~public/images/AE_logo.png'
 
-const navigation = [
-  { name: 'Exhibition', href: '#' },
-  { name: 'Booking', href: 'a#' },
-  {
-    name: 'Events',
-    href: '#',
-  },
-  { name: 'About', href: '#' },
-  { name: 'FAQ', href: '#' },
-]
+export default function Header() {
+  return (
+    <div className='w-full dark:bg-neutral-900 py-2 px-2'>
+      <Navbar />
+    </div>
+  )
+}
 
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+const Navbar = () => {
+  const navItems = [
+    { name: 'Exhibition', link: '#' },
+    { name: 'Booking', link: '#' },
+    {
+      name: 'Events',
+      link: '#',
+    },
+    { name: 'About', link: '#' },
+    { name: 'FAQ', link: '#' },
+  ]
 
   return (
-    <header className='bg-wheat-600'>
-      <nav
-        aria-label='Global'
-        className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'>
-        <div className='flex'>
-          <Link href='/' className='-m-1.5 p-1.5'>
-            <Image alt='' src={logo} className='h-16 w-auto' />
-          </Link>
-        </div>
-        <div className='flex lg:hidden'>
-          <button
-            type='button'
-            onClick={() => setMobileMenuOpen(true)}
-            className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white'>
-            <span className='sr-only'>Open main menu</span>
-            <Bars3Icon aria-hidden='true' className='h-6 w-6' />
-          </button>
-        </div>
-        <div
-          className='hidden lg:flex lg:gap-x-12 lg:justify-center'
-          style={{ width: '80%' }}>
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              // target={item?.target ? item?.target : '_self'}
-              className='text-sm font-semibold leading-6'>
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
+    <div className='w-full'>
+      <DesktopNav navItems={navItems} />
+      <MobileNav navItems={navItems} />
+    </div>
+  )
+}
+
+const DesktopNav = ({ navItems }: any) => {
+  const [hovered, setHovered] = useState<number | null>(null)
+  return (
+    <motion.div
+      onMouseLeave={() => {
+        setHovered(null)
+      }}
+      className={cn(
+        'hidden lg:flex flex-row self-start bg-white dark:bg-neutral-950 items-center justify-between py-2 max-w-7xl mx-auto px-4 rounded-full relative z-[60] w-full',
+        'sticky top-40 inset-x-0'
+      )}>
+      <Logo />
+      <div className='lg:flex flex-row flex-1 hidden items-center justify-center space-x-2 lg:space-x-2 text-sm text-zinc-600 font-medium hover:text-zinc-800 transition duration-200'>
+        {navItems.map((navItem: any, idx: number) => (
           <Link
-            href='/manager'
-            className='text-sm font-semibold leading-6 text-white'>
-            Log in <span aria-hidden='true'>&rarr;</span>
+            onMouseEnter={() => setHovered(idx)}
+            className='text-neutral-600 dark:text-neutral-300 relative px-4 py-2'
+            key={`link=${idx}`}
+            href={navItem?.link}>
+            {hovered === idx && (
+              <motion.div
+                layoutId='hovered'
+                className='w-full h-full absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-full'
+              />
+            )}
+            <span className='relative z-20'>{navItem.name}</span>
           </Link>
+        ))}
+      </div>
+      <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-lg bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+        Book your visit
+      </button>
+    </motion.div>
+  )
+}
+
+const MobileNav = ({ navItems }: any) => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <motion.div
+        animate={{
+          borderRadius: open ? '4px' : '2rem',
+        }}
+        key={String(open)}
+        className='flex relative flex-col lg:hidden w-full justify-between items-center bg-white dark:bg-neutral-950  max-w-[calc(100vw-2rem)] mx-auto px-4 py-2'>
+        <div className='flex flex-row justify-between items-center w-full'>
+          <Logo />
+          {open ? (
+            <IconX
+              className='text-black dark:text-white'
+              onClick={() => setOpen(!open)}
+            />
+          ) : (
+            <IconMenu2
+              className='text-black dark:text-white'
+              onClick={() => setOpen(!open)}
+            />
+          )}
         </div>
-      </nav>
-      <Dialog
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-        className='lg:hidden'>
-        <div className='fixed inset-0 z-10' />
-        <DialogPanel className='fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
-          <div className='flex items-center justify-between'>
-            <Link href='/' className='-m-1.5 p-1.5'>
-              <Image alt='' src={logo} className='h-16 w-auto' />
-            </Link>
-            <button
-              type='button'
-              onClick={() => setMobileMenuOpen(false)}
-              className='-m-2.5 rounded-md p-2.5 text-white'>
-              <span className='sr-only'>Close menu</span>
-              <XMarkIcon aria-hidden='true' className='h-6 w-6' />
-            </button>
-          </div>
-          <div className='mt-6 flow-root'>
-            <div className='-my-6 divide-y divide-gray-500/10'>
-              <div className='space-y-2 py-6'>
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50'>
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <div className='py-6'>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className='flex rounded-lg absolute top-16 bg-white dark:bg-neutral-950 inset-x-0 z-20 flex-col items-start justify-start gap-4 w-full px-4 py-8'>
+              {navItems.map((navItem: any, idx: number) => (
                 <Link
-                  href='/manager'
-                  className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50'>
-                  Log in
+                  key={`link=${idx}`}
+                  href={navItem.link}
+                  className='relative text-neutral-600 dark:text-neutral-300'>
+                  <motion.span className='block'>{navItem.name} </motion.span>
                 </Link>
-              </div>
-            </div>
-          </div>
-        </DialogPanel>
-      </Dialog>
-    </header>
+              ))}
+              <button className='px-8 py-2 w-full rounded-lg bg-black dark:bg-white dark:text-black font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+                Book a call
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </>
+  )
+}
+
+const Logo = () => {
+  return (
+    <Link
+      href='/'
+      className='font-normal flex space-x-2 items-center text-sm mr-4  text-black px-2 py-1  relative z-20'>
+      <Image src={logo} alt='logo' width={30} height={30} />
+      <span className='font-medium text-black dark:text-white'>
+        Alexandre Errera
+      </span>
+    </Link>
   )
 }

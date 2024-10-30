@@ -14,7 +14,7 @@ import logo from '~public/images/AE_logo.png'
 export function Footer() {
   const pages = [
     { title: 'Exhibition', href: '#' },
-    { title: 'Booking', href: 'a#' },
+    { title: 'Booking', href: '#' },
     {
       title: 'Events',
       href: '#',
