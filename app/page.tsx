@@ -2,6 +2,7 @@ import FAQSection from '~components/faq'
 import { Footer } from '~components/footer'
 import Header from '~components/header'
 import Hero from '~components/hero'
+import StickyScrollSection from '~components/sticky-scroll'
 
 export default function Home() {
   return (
@@ -34,6 +35,9 @@ export default function Home() {
             Book your visit
           </button>
         </div>
+      </section>
+      <section className='pt-20'>
+        <StickyScrollSection />
       </section>
       <section>
         <FAQSection />
