@@ -82,7 +82,7 @@ const FAQItem = ({
 
   return (
     <div
-      className='mb-8 w-full cursor-pointer rounded-lg bg-white p-4 shadow-input dark:bg-neutral-900'
+      className='mb-8 w-full cursor-pointer rounded-sm bg-white p-4 shadow-input dark:bg-neutral-900'
       onClick={() => {
         if (isOpen) {
           setOpen(null)

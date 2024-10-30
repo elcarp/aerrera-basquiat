@@ -7,6 +7,15 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import logo from '~public/images/AE_logo.png'
 
+interface NavItem {
+  name: string
+  link: string
+}
+
+interface NavProps {
+  navItems: NavItem[]
+}
+
 export default function Header() {
   return (
     <div className='w-full dark:bg-neutral-900 py-2 px-2'>
@@ -16,13 +25,10 @@ export default function Header() {
 }
 
 const Navbar = () => {
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: 'Exhibition', link: '#' },
     { name: 'Booking', link: '#' },
-    {
-      name: 'Events',
-      link: '#',
-    },
+    { name: 'Events', link: '#' },
     { name: 'About', link: '#' },
     { name: 'FAQ', link: '#' },
   ]
@@ -35,7 +41,7 @@ const Navbar = () => {
   )
 }
 
-const DesktopNav = ({ navItems }: any) => {
+const DesktopNav: React.FC<NavProps> = ({ navItems }) => {
   const [hovered, setHovered] = useState<number | null>(null)
   return (
     <motion.div
@@ -43,35 +49,35 @@ const DesktopNav = ({ navItems }: any) => {
         setHovered(null)
       }}
       className={cn(
-        'hidden lg:flex flex-row self-start bg-white dark:bg-neutral-950 items-center justify-between py-2 max-w-7xl mx-auto px-4 rounded-full relative z-[60] w-full',
+        'hidden lg:flex flex-row self-start bg-white dark:bg-neutral-950 items-center justify-between py-2 max-w-7xl mx-auto px-4 rounded-sm relative z-[60] w-full',
         'sticky top-40 inset-x-0'
       )}>
       <Logo />
       <div className='lg:flex flex-row flex-1 hidden items-center justify-center space-x-2 lg:space-x-2 text-sm text-zinc-600 font-medium hover:text-zinc-800 transition duration-200'>
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem, idx) => (
           <Link
             onMouseEnter={() => setHovered(idx)}
             className='text-neutral-600 dark:text-neutral-300 relative px-4 py-2'
-            key={`link=${idx}`}
-            href={navItem?.link}>
+            key={`link-${idx}`}
+            href={navItem.link}>
             {hovered === idx && (
               <motion.div
                 layoutId='hovered'
-                className='w-full h-full absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-full'
+                className='w-full h-full absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-sm'
               />
             )}
             <span className='relative z-20'>{navItem.name}</span>
           </Link>
         ))}
       </div>
-      <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-lg bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+      <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
         Book your visit
       </button>
     </motion.div>
   )
 }
 
-const MobileNav = ({ navItems }: any) => {
+const MobileNav: React.FC<NavProps> = ({ navItems }) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -105,16 +111,16 @@ const MobileNav = ({ navItems }: any) => {
               }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className='flex rounded-lg absolute top-16 bg-white dark:bg-neutral-950 inset-x-0 z-20 flex-col items-start justify-start gap-4 w-full px-4 py-8'>
-              {navItems.map((navItem: any, idx: number) => (
+              className='flex rounded-sm absolute top-16 bg-white dark:bg-neutral-950 inset-x-0 z-20 flex-col items-start justify-start gap-4 w-full px-4 py-8'>
+              {navItems.map((navItem, idx) => (
                 <Link
-                  key={`link=${idx}`}
+                  key={`link-${idx}`}
                   href={navItem.link}
                   className='relative text-neutral-600 dark:text-neutral-300'>
                   <motion.span className='block'>{navItem.name} </motion.span>
                 </Link>
               ))}
-              <button className='px-8 py-2 w-full rounded-lg bg-black dark:bg-white dark:text-black font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+              <button className='px-8 py-2 w-full rounded-sm bg-black dark:bg-white dark:text-black font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
                 Book a call
               </button>
             </motion.div>

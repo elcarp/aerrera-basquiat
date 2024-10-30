@@ -54,10 +54,10 @@ export default function Hero() {
             </p>
           </RoughNotationGroup>
           <div className='flex sm:flex-row flex-col gap-4 items-center mt-10 [perspective:800px]'>
-            <button className='px-4 py-2 rounded-lg bg-yellow-400 w-full sm:w-auto font-bold text-black text-base hover:[transform:rotateX(10deg)] transition duration-200 origin-left hover:shadow-lg'>
+            <button className='px-4 py-2 rounded-sm bg-yellow-400 w-full sm:w-auto font-bold text-black text-base hover:[transform:rotateX(10deg)] transition duration-200 origin-left hover:shadow-lg'>
               Book your visit
             </button>
-            <button className='text-black dark:text-white hover:border-yellow-500 border border-transparent px-4 py-2 rounded-lg text-base transition duration-200'>
+            <button className='text-black dark:text-white hover:border-yellow-500 border border-transparent px-4 py-2 rounded-sm text-base transition duration-200'>
               Learn more
             </button>
           </div>
@@ -117,21 +117,21 @@ export const Skeleton = () => {
             alt='island 1'
             height='200'
             width='200'
-            className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
+            className='h-full opacity-0 rounded-sm w-full max-h-[100px] object-cover image'
           />
           <Image
             src='https://images.unsplash.com/photo-1637296276416-3276f530334b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
             height='200'
             width='200'
-            className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
+            className='h-full opacity-0 rounded-sm w-full max-h-[100px] object-cover image'
           />{' '}
           <Image
             src='https://images.unsplash.com/photo-1637296354720-50056c1dfa1b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
             height='200'
             width='200'
-            className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
+            className='h-full opacity-0 rounded-sm w-full max-h-[100px] object-cover image'
           /> */}
         </div>
       </div>
