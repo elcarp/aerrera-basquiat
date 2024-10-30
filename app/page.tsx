@@ -32,7 +32,7 @@ export default function Home() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <button className='block mx-auto px-4 py-2 rounded-sm bg-yellow-400 w-full sm:w-auto font-bold text-black text-base hover:[transform:rotateX(10deg)] transition duration-200 origin-left hover:shadow-lg'>
-            Book your visit
+            View Press Release
           </button>
         </div>
       </section>
