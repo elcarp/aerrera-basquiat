@@ -5,6 +5,7 @@ import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 import { animate, stagger, useInView } from 'framer-motion'
+import frame from '~public/images/frame.svg'
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -95,50 +96,44 @@ export const Skeleton = () => {
     <div ref={ref} className='realtive pt-20 w-[360px] h-[600px] m-auto'>
       <div
         style={{
-          backgroundImage: `url('${SVGDataURI}')`,
-          backgroundSize: 'cover',
+          backgroundImage: `url('/images/frame.svg')`,
+          backgroundSize: 'contain',
           backgroundPosition: 'top',
           backgroundRepeat: 'no-repeat',
         }}
         className='absolute inset-0 mx-auto w-full max-w-[360px] h-[600px] dark:filter dark:invert'
       />
-      <div className='px-8 mt-0 md:mt-10 flex flex-col gap-4 relative z-20'>
-        <div className='first opacity-0 text-sm text-neutral-800 dark:text-neutral-100 p-2 bg-gray-100 dark:bg-neutral-700 rounded-lg'>
-          Hey! Please show me my latest images from my latest trip.
-        </div>
-        <div className='second opacity-0 text-sm  text-neutral-800 dark:text-neutral-100 p-2 bg-gray-100 dark:bg-neutral-700 rounded-lg'>
-          Sure, here are the latest images from your trip to the island of deez
-          nuts.
-        </div>
-        <div className='images  grid grid-cols-2 gap-2'>
+      <div className='px-12 -mt-7 flex flex-col gap-4 relative z-20'>
+        <div className='images'>
           <Image
-            src='https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?q=80&w=2992&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src='https://images.unsplash.com/photo-1639999472003-dc2320ce5708?q=80&w=2865&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
-            height='200'
-            width='200'
-            className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
-          />{' '}
+            height='350'
+            width='100'
+            className='h-full opacity-0 w-full max-h-[350px] object-cover image'
+          />
+          {/* {' '}
           <Image
-            src='https://images.unsplash.com/photo-1509233725247-49e657c54213?q=80&w=3449&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src='https://images.unsplash.com/photo-1637296324807-65a3c87936b3?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
             height='200'
             width='200'
             className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
           />
           <Image
-            src='https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=3592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src='https://images.unsplash.com/photo-1637296276416-3276f530334b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
             height='200'
             width='200'
             className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
           />{' '}
           <Image
-            src='https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src='https://images.unsplash.com/photo-1637296354720-50056c1dfa1b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt='island 1'
             height='200'
             width='200'
             className='h-full opacity-0 rounded-lg w-full max-h-[100px] object-cover image'
-          />
+          /> */}
         </div>
       </div>
     </div>
