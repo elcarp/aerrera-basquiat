@@ -36,7 +36,7 @@ export default function Home() {
           </button>
         </div>
       </section>
-      <section className='pt-20'>
+      <section>
         <StickyScrollSection />
       </section>
       <section>

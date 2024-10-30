@@ -114,7 +114,7 @@ export default function StickyScrollSection() {
         duration: 0.5,
       }}
       ref={ref}
-      className='w-full relative h-full pt-20 md:pt-40 max-w-7xl mx-auto'>
+      className='w-full relative h-full pt-20 md:pt-40 mx-auto'>
       <div className='px-6 flex flex-col items-center text-center'>
         <h2 className='mt-4 text-white text-lg md:text-2xl lg:text-4xl font-bold'>
           AI Smarter than Aliens
