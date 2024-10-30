@@ -5,6 +5,7 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '~public/images/AE_logo.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Exhibition', href: '#' },
@@ -46,7 +47,7 @@ export default function Example() {
             <Link
               key={item.name}
               href={item.href}
-              target={item?.target ? item?.target : '_self'}
+              // target={item?.target ? item?.target : '_self'}
               className='text-sm font-semibold leading-6'>
               {item.name}
             </Link>
