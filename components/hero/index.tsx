@@ -5,7 +5,6 @@ import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 import { animate, stagger, useInView } from 'framer-motion'
-import frame from '~public/images/frame.svg'
 
 const manrope = Manrope({
   subsets: ['latin'],
