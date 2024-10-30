@@ -26,9 +26,9 @@ export default function Example() {
         aria-label='Global'
         className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'>
         <div className='flex'>
-          <a href='/' className='-m-1.5 p-1.5'>
+          <Link href='/' className='-m-1.5 p-1.5'>
             <Image alt='' src={logo} className='h-16 w-auto' />
-          </a>
+          </Link>
         </div>
         <div className='flex lg:hidden'>
           <button
@@ -43,13 +43,13 @@ export default function Example() {
           className='hidden lg:flex lg:gap-x-12 lg:justify-center'
           style={{ width: '80%' }}>
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
               target={item?.target ? item?.target : '_self'}
               className='text-sm font-semibold leading-6'>
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
