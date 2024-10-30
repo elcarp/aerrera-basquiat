@@ -24,7 +24,7 @@ export function Footer() {
   ]
 
   return (
-    <div className='border-t border-neutral-100 dark:border-white/[0.1] px-8 py-20 bg-white dark:bg-neutral-950 w-full relative overflow-hidden'>
+    <div className='border-t border-neutral-100 dark:border-white/[0.1] px-8 py-20 bg-[#6adcc5] dark:bg-neutral-950 w-full relative overflow-hidden'>
       <div className='max-w-7xl mx-auto text-sm text-neutral-500 justify-between items-start md:px-8'>
         <div className='flex flex-col items-center justify-center w-full relative'>
           <div className='mr-0 md:flex mb-4'>

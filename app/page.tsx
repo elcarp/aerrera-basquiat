@@ -9,7 +9,7 @@ export default function Home() {
       <Header />
       <Hero />
       <section
-        className='font-[family-name:var(--font-geist-sans)] flex items-center bg-[#02b7f1]'
+        className='font-[family-name:var(--font-geist-sans)] flex items-center bg-[#6adcc5]'
         // style={{
         //   backgroundImage: `url('/images/background.png')`,
         //   backgroundSize: 'cover',
