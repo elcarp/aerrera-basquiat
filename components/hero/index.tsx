@@ -87,8 +87,8 @@ export const Skeleton = () => {
         { duration: 1, ease: 'easeOut', delay: stagger(0.4) },
       ],
     ]
-
-    //@ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
     if (isInView) animate(sequence)
   }, [isInView])
   return (
