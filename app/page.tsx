@@ -55,15 +55,13 @@ export default function Home() {
           <h2 className='text-center text-4xl font-medium tracking-tight text-neutral-600 dark:text-neutral-50 md:text-5xl pb-5'>
             Show Highlights
           </h2>
-          <p className='text-center pb-10'>
-            <div className='h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden'>
-              <ScrollingCards
-                items={testimonials}
-                direction='right'
-                speed='slow'
-              />
-            </div>{' '}
-          </p>
+          <div className='h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden'>
+            <ScrollingCards
+              items={testimonials}
+              direction='right'
+              speed='slow'
+            />
+          </div>
           <button className='block mx-auto px-4 py-2 rounded-sm bg-yellow-400 w-full sm:w-auto font-bold text-black text-base hover:[transform:rotateX(10deg)] transition duration-200 origin-left hover:shadow-lg'>
             View Press Release
           </button>
