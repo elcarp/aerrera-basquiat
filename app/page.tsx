@@ -51,14 +51,14 @@ export default function Home() {
         //   backgroundPosition: 'center -400px',
         // }}
       >
-        <div className='max-w-2xl mx-auto p-20'>
+        <div className='mx-auto p-20'>
           <h2 className='text-center text-4xl font-medium tracking-tight text-neutral-600 dark:text-neutral-50 md:text-5xl pb-5'>
             Show Highlights
           </h2>
-          <div className='h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden'>
+          <div className='h-[40rem] rounded-md flex flex-col antialiased bg-black dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden'>
             <ScrollingCards
               items={testimonials}
-              direction='right'
+              direction='left'
               speed='slow'
             />
           </div>

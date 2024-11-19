@@ -26,7 +26,9 @@ const ScrollingCards = ({
   useEffect(() => {
     addAnimation()
   }, [])
+
   const [start, setStart] = useState(false)
+
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children)
@@ -83,7 +85,7 @@ const ScrollingCards = ({
           start && 'animate-scroll ',
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}>
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
             className='w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]'
             style={{
