@@ -27,14 +27,14 @@ export default function Hero() {
                 'text-2xl sm:text-4xl lg:text-7xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 text-center sm:text-left',
                 manrope.className
               )}>
-              Basquiat
+              Jean-Michel Basquiat: 
               <p>
                 <RoughNotation
                   type='highlight'
                   animationDuration={2000}
                   iterations={3}
                   color='#facc1580'>
-                  <span className='text-currentColor'>Exhibition</span>
+                  <span className='text-currentColor'>The Sacred Eight</span>
                 </RoughNotation>
               </p>
             </h2>
@@ -95,7 +95,7 @@ export const Skeleton = () => {
     <div ref={ref} className='realtive pt-20 w-[360px] h-[600px] m-auto'>
       <div
         style={{
-          backgroundImage: `url('/images/frame.svg')`,
+          // backgroundImage: `url('/images/frame.svg')`,
           backgroundSize: 'contain',
           backgroundPosition: 'top',
           backgroundRepeat: 'no-repeat',
