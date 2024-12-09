@@ -11,238 +11,30 @@ const spectral = Spectral({
   weight: ['400', '700'],
 })
 
-
 export default function Hero() {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
   return (
-    <div ref={ref} className='bg-gray-50 w-full dark:bg-neutral-800 mb-20 md:mb-0'>
-      <div className='grid max-h-[50rem] md:max-h-[40rem] overflow-hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto  pt-10 md:pt-20  items-start'>
-        <div className='lg:col-span-2 py-10 md:py-10 px-4 md:px-8'>
-          <RoughNotationGroup show={isInView}>
-            <h2
-              className={cn(
-                'text-2xl sm:text-4xl lg:text-7xl font-light tracking-tight text-neutral-900 dark:text-neutral-50 text-center sm:text-left',
-                spectral.className
-              )}>
-              Jean-Michel Basquiat: 
-              <p>
-                <RoughNotation
-                  type='highlight'
-                  animationDuration={2000}
-                  iterations={3}
-                  color='#facc1580'>
-                  <span className='text-currentColor'>The Sacred Eight</span>
-                </RoughNotation>
-              </p>
-            </h2>
-            <p className='text-neutral-500 dark:text-neutral-400 text-sm md:text-lg max-w-2xl mt-4 md:mt-10 text-center sm:text-left'>
-              Venue: 36/F, The Henderson, 2 Murray Road, Central, Hong Kong
-              <br />
-              <RoughNotation
-                type='underline'
-                animationDuration={2000}
-                iterations={3}
-                color='#facc15'>
-                Period: March 24 - May 5, 2025
-              </RoughNotation>
-              <br /> Hours: 10:00 AM - 07:00 PM
-              <br />
-              Booking required
-            </p>
-          </RoughNotationGroup>
-          <div className='flex sm:flex-row flex-col gap-4 items-center mt-10 [perspective:800px]'>
-            <button className='px-4 py-2 rounded-sm bg-yellow-400 w-full sm:w-auto font-bold text-black text-base hover:[transform:rotateX(10deg)] transition duration-200 origin-left hover:shadow-lg'>
-              Book your visit
-            </button>
-            <button className='text-black dark:text-white hover:border-yellow-500 border border-transparent px-4 py-2 rounded-sm text-base transition duration-200'>
-              Learn more
-            </button>
-          </div>
-        </div>
-        <div className='flex justify-end overflow-hidden h-full w-full relative flex-shrink-0'>
-          <Skeleton />
+    <div className='container mx-auto lg:flex px-10 lg:px-6'>
+      <div className='w-full lg:w-1/2 py-10'>
+        <h1 className={`${spectral.className} text-6xl`}>
+          Jean-Michel Basquiat: The Sacred Eight
+        </h1>
+      </div>
+      <div className='w-full lg:w-1/2 py-10'>
+        <p>
+          Join us for an unforgettable journey through the iconic works of
+          Jean-Michel Basquiat. The exhibition runs from March 24 to May 5,
+          2025, at The Henderson in Central, Hong Kong. Public opening March 28,
+          2025.
+        </p>
+        <div className='flex mt-5'>
+          <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+            Tickets
+          </button>
+          <button className='ml-3 hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-white border border-black dark:bg-white dark:text-black  text-black shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+            Learn More
+          </button>
         </div>
       </div>
     </div>
-  )
-}
-
-export const Skeleton = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
-  useEffect(() => {
-    const sequence = [
-      ['.first', { opacity: [0, 1] }, { duration: 1, ease: 'easeOut' }],
-      ['.second', { opacity: [0, 1] }, { duration: 1, ease: 'easeOut' }],
-      [
-        '.images .image',
-        {
-          opacity: [0, 1],
-          rotate: [0, Math.floor(Math.random() * 10), 0],
-          scale: [1, 1.1, 1],
-        },
-        { duration: 1, ease: 'easeOut', delay: stagger(0.4) },
-      ],
-    ]
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-    if (isInView) animate(sequence)
-  }, [isInView])
-  return (
-    <div ref={ref} className='realtive pt-20 w-[360px] h-[600px] m-auto'>
-      <div
-        style={{
-          // backgroundImage: `url('/images/frame.svg')`,
-          backgroundSize: 'contain',
-          backgroundPosition: 'top',
-          backgroundRepeat: 'no-repeat',
-        }}
-        className='absolute inset-0 mx-auto w-full max-w-[360px] h-[600px] dark:filter dark:invert'
-      />
-      <div className='px-12 flex flex-col gap-4 relative z-20'>
-        <div className='images'>
-          <Image
-            src='https://images.unsplash.com/photo-1639999472003-dc2320ce5708?q=80&w=2865&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='island 1'
-            height='200'
-            width='100'
-            className='h-full opacity-0 w-full max-h-[200px] object-cover image'
-          />
-          {/* {' '}
-          <Image
-            src='https://images.unsplash.com/photo-1637296324807-65a3c87936b3?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='island 1'
-            height='200'
-            width='200'
-            className='h-full opacity-0 rounded-sm w-full max-h-[100px] object-cover image'
-          />
-          <Image
-            src='https://images.unsplash.com/photo-1637296276416-3276f530334b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='island 1'
-            height='200'
-            width='200'
-            className='h-full opacity-0 rounded-sm w-full max-h-[100px] object-cover image'
-          />{' '}
-          <Image
-            src='https://images.unsplash.com/photo-1637296354720-50056c1dfa1b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='island 1'
-            height='200'
-            width='200'
-            className='h-full opacity-0 rounded-sm w-full max-h-[100px] object-cover image'
-          /> */}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export const MobileMockup = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      width='421'
-      height='852'
-      viewBox='0 0 421 852'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      className={cn(
-        'text-neutral-900 dark:text-neutral-50 h-full w-full  mx-auto flex-shrink-0 absolute inset-0 object-cover object-top',
-        className
-      )}>
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M73 0H348C386.66 0 418 31.3401 418 70V782C418 820.66 386.66 852 348 852H73C34.3401 852 3 820.66 3 782V70C3 31.3401 34.3401 0 73 0ZM348 6H73C37.6538 6 9 34.6538 9 70V782C9 817.346 37.6538 846 73 846H348C383.346 846 412 817.346 412 782V70C412 34.6538 383.346 6 348 6Z'
-        fill='currentColor'
-      />
-      <rect
-        x='318'
-        width='10'
-        height='6'
-        fill='currentColor'
-        fillOpacity='0.2'
-      />
-      <rect
-        x='93'
-        y='846'
-        width='10'
-        height='6'
-        fill='currentColor'
-        fillOpacity='0.2'
-      />
-      <rect
-        x='3'
-        y='90'
-        width='6'
-        height='10'
-        fill='currentColor'
-        fillOpacity='0.2'
-      />
-      <rect
-        x='412'
-        y='90'
-        width='6'
-        height='10'
-        fill='currentColor'
-        fillOpacity='0.2'
-      />
-      <rect
-        x='3'
-        y='752'
-        width='6'
-        height='10'
-        fill='currentColor'
-        fillOpacity='0.2'
-      />
-      <rect
-        x='412'
-        y='752'
-        width='6'
-        height='10'
-        fill='currentColor'
-        fillOpacity='0.2'
-      />
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M417.971 266H418.981C420.096 266 421 266.895 421 268V364C421 365.105 420.096 366 418.981 366H417.971V266Z'
-        fill='currentColor'
-      />
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M0 302C0 300.895 0.90402 300 2.01918 300H3.02878V363H2.01918C0.90402 363 0 362.105 0 361V302Z'
-        fill='currentColor'
-      />
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M0 223C0 221.895 0.90402 221 2.01918 221H3.02878V284H2.01918C0.90402 284 0 283.105 0 282V223Z'
-        fill='currentColor'
-      />
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M0 162C0 160.895 0.90402 160 2.01918 160H3.02878V193H2.01918C0.90402 193 0 192.105 0 191V162Z'
-        fill='currentColor'
-      />
-      <rect
-        x='150'
-        y='30'
-        width='120'
-        height='35'
-        rx='17.5'
-        fill='currentColor'
-      />
-      <rect
-        x='244'
-        y='41'
-        width='13'
-        height='13'
-        rx='6.5'
-        fill='currentColor'
-        fillOpacity='0.1'
-      />
-    </svg>
   )
 }

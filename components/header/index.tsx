@@ -26,11 +26,9 @@ export default function Header() {
 
 const Navbar = () => {
   const navItems: NavItem[] = [
-    { name: 'Exhibition', link: '#' },
-    { name: 'Booking', link: '#' },
-    { name: 'Events', link: '#' },
-    { name: 'About', link: '#' },
-    { name: 'FAQ', link: '#' },
+    { name: 'Plan Your Visit', link: '#' },
+    { name: 'Get Tickets', link: '#' },
+    { name: 'Alexandre Errera', link: 'https://alexandreerrera.com/' },
   ]
 
   return (
@@ -71,7 +69,7 @@ const DesktopNav: React.FC<NavProps> = ({ navItems }) => {
         ))}
       </div>
       <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
-        Book your visit
+        Tickets
       </button>
     </motion.div>
   )
