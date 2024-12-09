@@ -50,7 +50,7 @@ export default function PreRegister() {
         onClick={() => setShowModal(false)}
         className={`modal-overlay ${
           showModal == true ? 'fixed' : 'hidden'
-        }  bg-black opacity-50 w-full h-full top-0 cursor-pointer`}
+        }  bg-black opacity-50 w-full h-full top-0 cursor-pointer z-10`}
       />
       <div
         className={`modal ${
