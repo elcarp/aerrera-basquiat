@@ -54,30 +54,36 @@ export default function PreRegister() {
       />
       <div
         className={`modal ${
-          showModal == true ? 'block' : 'hidden'
-        } bg-white p-10 relative left-0 right-0 z-50 w-1/2 mx-auto top-[35rem]`}>
-        <form className='my-8'>
-          <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
-            <LabelInputContainer>
-              <Label htmlFor='firstname'>First name</Label>
-              <Input id='firstname' placeholder='Your given name' type='text' />
+          showModal == true ? 'grid' : 'hidden'
+        } h-screen place-items-center`}>
+        <div className='bg-white p-10 z-50 w-1/2 mx-auto'>
+          <form className='my-8'>
+            <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
+              <LabelInputContainer>
+                <Label htmlFor='firstname'>First name</Label>
+                <Input
+                  id='firstname'
+                  placeholder='Your given name'
+                  type='text'
+                />
+              </LabelInputContainer>
+              <LabelInputContainer>
+                <Label htmlFor='lastname'>Last name</Label>
+                <Input id='lastname' placeholder='Your surname' type='text' />
+              </LabelInputContainer>
+            </div>
+            <LabelInputContainer className='mb-4'>
+              <Label htmlFor='email'>Email Address</Label>
+              <Input id='email' placeholder='Your email address' type='email' />
             </LabelInputContainer>
-            <LabelInputContainer>
-              <Label htmlFor='lastname'>Last name</Label>
-              <Input id='lastname' placeholder='Your surname' type='text' />
-            </LabelInputContainer>
-          </div>
-          <LabelInputContainer className='mb-4'>
-            <Label htmlFor='email'>Email Address</Label>
-            <Input id='email' placeholder='Your email address' type='email' />
-          </LabelInputContainer>
-          <button
-            className='bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]'
-            type='submit'>
-            Sign up &rarr;
-            <BottomGradient />
-          </button>
-        </form>
+            <button
+              className='bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]'
+              type='submit'>
+              Sign up &rarr;
+              <BottomGradient />
+            </button>
+          </form>
+        </div>
       </div>
       <div className='container mx-auto px-10 lg:px-6 py-10'>
         <h2 className={`${spectral.className} text-6xl text-center mx-auto`}>
