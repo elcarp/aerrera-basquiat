@@ -3,6 +3,7 @@ import { Spectral } from 'next/font/google'
 import React from 'react'
 import placeholder from '~public/images/placeholder.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const spectral = Spectral({
   subsets: ['latin'],
@@ -26,9 +27,11 @@ export default function Hero() {
             28, 2025.
           </p>
           <div className='flex mt-5'>
-            <button className='px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+            <Link
+              href='/#tickets'
+              className='px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
               Tickets
-            </button>
+            </Link>
             <button className='ml-3 px-8 py-2 text-sm font-bold rounded-sm bg-white border border-black dark:bg-white dark:text-black  text-black shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
               Learn More
             </button>

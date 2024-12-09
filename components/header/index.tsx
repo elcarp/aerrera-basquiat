@@ -27,7 +27,7 @@ export default function Header() {
 const Navbar = () => {
   const navItems: NavItem[] = [
     { name: 'Plan Your Visit', link: '#' },
-    { name: 'Get Tickets', link: '#' },
+    { name: 'Get Tickets', link: '/#tickets' },
     { name: 'Alexandre Errera', link: 'https://alexandreerrera.com/' },
   ]
 
@@ -68,9 +68,11 @@ const DesktopNav: React.FC<NavProps> = ({ navItems }) => {
           </Link>
         ))}
       </div>
-      <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+      <Link
+        href='/#tickets'
+        className='hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
         Tickets
-      </button>
+      </Link>
     </motion.div>
   )
 }
