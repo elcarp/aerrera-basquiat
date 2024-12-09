@@ -1,10 +1,6 @@
 'use client'
-import { cn } from '~lib/utils'
 import { Spectral } from 'next/font/google'
-import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
-import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
-import { animate, stagger, useInView } from 'framer-motion'
+import React from 'react'
 
 const spectral = Spectral({
   subsets: ['latin'],
