@@ -11,15 +11,16 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.1.5",
+    "@radix-ui/react-label": "^2.1.0",
     "@tabler/icons-react": "^3.21.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.11.17",
+    "framer-motion": "^11.13.1",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
     "react-rough-notation": "^1.0.5",
     "tailwind": "^4.0.0",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
     "@types/node": "^20",

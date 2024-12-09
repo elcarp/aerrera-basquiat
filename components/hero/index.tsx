@@ -26,10 +26,10 @@ export default function Hero() {
             28, 2025.
           </p>
           <div className='flex mt-5'>
-            <button className='hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+            <button className='px-8 py-2 text-sm font-bold rounded-sm bg-black dark:bg-white dark:text-black  text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
               Tickets
             </button>
-            <button className='ml-3 hidden md:block px-8 py-2 text-sm font-bold rounded-sm bg-white border border-black dark:bg-white dark:text-black  text-black shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
+            <button className='ml-3 px-8 py-2 text-sm font-bold rounded-sm bg-white border border-black dark:bg-white dark:text-black  text-black shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset]'>
               Learn More
             </button>
           </div>
