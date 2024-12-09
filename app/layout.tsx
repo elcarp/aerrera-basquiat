@@ -13,6 +13,11 @@ const geistMono = localFont({
   weight: '100 900',
 })
 
+const pxGrotesk = localFont({
+  src: './fonts/PxGrotesk-Regular.otf',
+  weight: '100 900',
+})
+
 export const metadata: Metadata = {
   title: 'Alexandre Errera - Basquiat Exhibition',
   description: 'Basquiat Exhibition Information March 24 - May 5, 2025',
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${pxGrotesk.className}  antialiased`}>
         {children}
       </body>
     </html>
