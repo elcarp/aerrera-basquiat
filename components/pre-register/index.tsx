@@ -55,7 +55,7 @@ export default function PreRegister() {
       <div
         className={`modal ${
           showModal == true ? 'block' : 'hidden'
-        } bg-white p-10 absolute left-0 right-0 z-50 w-1/2 mx-auto`}>
+        } bg-white p-10 relative left-0 right-0 z-50 w-1/2 mx-auto top-[35rem]`}>
         <form className='my-8'>
           <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
             <LabelInputContainer>
